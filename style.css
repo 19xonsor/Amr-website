@@ -267,3 +267,22 @@ span{
         margin-top: 4rem;
     }
 }
+
+
+/* smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* basic section styling so new sections look OK */
+section#services, section#skills, section#education, section#experience, section#contact {
+  padding: 6rem 12%;
+  background: #000;
+  color: #fff;
+}
+
+section#services h2, section#skills h2, section#education h2, section#experience h2, section#contact h2{
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #b74b4b;
+}
+
+section#contact a.btn{ margin-top:1rem; display:inline-block; }

@@ -358,3 +358,60 @@ section#resume p{
 .experience-item ul li{
   margin-bottom: 0.5rem;
 }
+
+/* --------------------------------------------------------------
+   Enhanced visuals and layout
+   -------------------------------------------------------------- */
+/* Icons inside skills */
+.skills-container .skill i {
+  color: #b74b4b;
+  font-size: 2rem;
+  margin-right: 0.6rem;
+}
+
+/* Vertical timeline styles for experience */
+.timeline {
+  position: relative;
+  margin-left: 2rem;
+  padding-left: 2rem;
+  border-left: 2px solid #b74b4b;
+}
+
+.timeline .experience-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline .experience-item::before {
+  content: "";
+  position: absolute;
+  left: -1.3rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: #b74b4b;
+  border-radius: 50%;
+}
+
+/* Contact list with icons */
+.contact-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.6rem;
+}
+
+.contact-list li {
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.contact-list li i {
+  color: #b74b4b;
+  font-size: 2rem;
+}
+
+.contact-list li a {
+  color: #fff;
+}

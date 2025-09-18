@@ -480,6 +480,23 @@ section#resume p{
   border-color: var(--accent-color);
 }
 
+/* Ensure nav links retain the highlight on hover and when active in light theme */
+:root[data-theme='light'] nav a:hover,
+:root[data-theme='light'] nav a.active {
+  color: var(--accent-color);
+  border-bottom: 3px solid var(--accent-color);
+}
+
+/* Adjust mobile nav highlight for light theme */
+@media (max-width: 995px) {
+  :root[data-theme='light'] nav a:hover,
+  :root[data-theme='light'] nav a.active {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-bottom: 0.5rem solid var(--accent-color);
+  }
+}
+
 /* Fade-in animation for sections */
 .animate-on-scroll{
   opacity: 0;

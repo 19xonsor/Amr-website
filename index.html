@@ -44,10 +44,14 @@
       <p>Motivated IT student with hands-on experience in Active Directory, Linux systems, and home networking...</p>
       <!-- Button to show/hide the embedded resume -->
       <button class="btn" onclick="showResume()">View Resume</button>
-      <!-- Embedded PDF viewer, hidden by default -->
-      <iframe id="resumeViewer" src="assets/resume.pdf" style="width:100%;height:80vh;display:none;border:none;margin-top:2rem;"></iframe>
+      <!-- Embedded resume image instead of PDF. Using an image removes the PDF toolbar completely. -->
+      <div id="resumeViewer" style="display:none; margin-top:2rem;">
+        <!-- Inline the resume image via base64 to ensure it always loads. The image will be
+             set from JavaScript; the placeholder <img> remains hidden until loaded. -->
+        <img id="resumeImage" src="assets/resume-inline.jpg" alt="Resume image" style="width:100%; height:auto;"/>
+      </div>
       <!-- Direct download (PDF) -->
-      <a class="btn" href="assets/resume.pdf?v=2" download>Download Resume</a>
+      <a class="btn" href="assets/resume.pdf" download>Download Resume</a>
     </section>
     
 
@@ -167,25 +171,15 @@
       }
     }
 
-    /* Scrollspy: highlight active nav link based on scroll position */
+    /* Highlight nav link when clicked */
     (function() {
-      const sections = [...document.querySelectorAll('section[id]')];
-      const navLinks = new Map(
-        [...document.querySelectorAll('header nav a[href^="#"]')]
-          .map(a => [a.getAttribute('href').slice(1), a])
-      );
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const id = entry.target.getAttribute('id');
-          if (!id) return;
-          navLinks.forEach(a => a.classList.remove('active'));
-          if (navLinks.has(id)) {
-            navLinks.get(id).classList.add('active');
-          }
+      const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
         });
-      }, { rootMargin: '-50% 0px -45% 0px', threshold: 0.1 });
-      sections.forEach(section => observer.observe(section));
+      });
     })();
 
     /* Animate skill bars when visible */
@@ -251,6 +245,35 @@
         });
       }, { threshold: 0.1 });
       faders.forEach(el => fadeObserver.observe(el));
+    })();
+
+
+    /* Scroll spy to highlight nav links based on visible sections. When
+       a section enters the viewport, its corresponding nav link receives
+       the `.active` class. */
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+      // Map section IDs to their navigation links for quick lookup
+      const linkMap = {};
+      navLinks.forEach(link => {
+        const id = link.getAttribute('href').substring(1);
+        linkMap[id] = link;
+      });
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            // Clear existing active state
+            navLinks.forEach(l => l.classList.remove('active'));
+            // Highlight the link that matches the visible section
+            if (linkMap[id]) {
+              linkMap[id].classList.add('active');
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+      sections.forEach(section => observer.observe(section));
     })();
     </script>
 

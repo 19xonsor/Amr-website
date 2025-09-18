@@ -286,3 +286,211 @@ section#services h2, section#skills h2, section#education h2, section#experience
 }
 
 section#contact a.btn{ margin-top:1rem; display:inline-block; }
+
+/* Resume section styling */
+section#resume{
+  padding: 6rem 12%;
+  background: #000;
+  color: #fff;
+}
+
+section#resume h2{
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #b74b4b;
+}
+
+section#resume p{
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+/* Skills progress bar styling */
+.skills-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.skills-container .skill{
+  flex: 1 1 200px;
+}
+
+.skills-container .skill-name{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.skills-container .bar{
+  background: #333;
+  border-radius: 1rem;
+  height: 0.8rem;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+
+.skills-container .bar .value{
+  background: #b74b4b;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+/* Experience items styling */
+.experience-item{
+  margin-bottom: 2.5rem;
+}
+
+.experience-item h3{
+  font-size: 2rem;
+  color: #b74b4b;
+}
+
+.experience-item p{
+  font-size: 1.4rem;
+  color: #aaa;
+}
+
+.experience-item ul{
+  margin-left: 2rem;
+  font-size: 1.4rem;
+}
+
+.experience-item ul li{
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------
+   Enhanced visuals and layout
+   -------------------------------------------------------------- */
+/* Icons inside skills */
+.skills-container .skill i {
+  color: #b74b4b;
+  font-size: 2rem;
+  margin-right: 0.6rem;
+}
+
+/* Vertical timeline styles for experience */
+.timeline {
+  position: relative;
+  margin-left: 2rem;
+  padding-left: 2rem;
+  border-left: 2px solid #b74b4b;
+}
+
+.timeline .experience-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline .experience-item::before {
+  content: "";
+  position: absolute;
+  left: -1.3rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: #b74b4b;
+  border-radius: 50%;
+}
+
+/* Contact list with icons */
+.contact-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.6rem;
+}
+
+.contact-list li {
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.contact-list li i {
+  color: #b74b4b;
+  font-size: 2rem;
+}
+
+.contact-list li a {
+  color: #fff;
+}
+
+/*
+ * Enhancements for readability and interactivity
+ */
+/* Increase text size for education and experience sections */
+section#education p {
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+section#experience h3 {
+  font-size: 2.2rem;
+}
+
+section#experience p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+section#experience ul {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+/* Back-to-top button styles */
+#toTop {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: 2px solid #b74b4b;
+  background: #000;
+  color: #b74b4b;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  z-index: 999;
+}
+#toTop.show {
+  display: flex;
+}
+
+/* Theme toggle button styles */
+#themeToggle {
+  margin-left: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid #b74b4b;
+  background: transparent;
+  color: #b74b4b;
+  cursor: pointer;
+}
+
+/* Light theme overrides. Default theme is dark (defined above). */
+:root[data-theme='light'] {
+  --bg: #ffffff;
+  --text: #111111;
+  --accent: #b74b4b;
+}
+
+/* Apply light theme variables to body and controls */
+:root[data-theme='light'] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+:root[data-theme='light'] nav a {
+  color: var(--text);
+}
+
+:root[data-theme='light'] .btn {
+  background: var(--bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}

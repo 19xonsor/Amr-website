@@ -13,7 +13,7 @@
 <a class="logo" href="#">Amr</a>
 <nav>
 <a class="active" href="#home"> Home</a>
-<a href="#services">Services</a>
+<a href="#resume">Resume</a>
 <a href="#skills">Skills</a>
 <a href="#education">Education</a>
 <a href="#experience">Experience</a>
@@ -22,7 +22,7 @@
 </header>
 <section class="home" id="home">
 <div class="home-img">
-<img alt="" src="main.image.jpg"/>
+<img alt="" src="main.image.jpeg"/>
 </div>
 <div class="home-content">
 <h1>Hi, It's <span>Amr</span></h1>
@@ -36,6 +36,220 @@
 </div>
 <a class="btn" href="#">Hire me</a>
 </div>
-</section><section id="contact"><h2>Contact</h2><p>Email me at amrelkheir@example.com or use the buttons above to reach out. Replace this with your real contact info.</p></section><section id="experience"><h2>Experience</h2><p>Class projects, home labs, and personal experiments exploring IT and security.</p></section><section id="education"><h2>Education</h2><p>Sophomore, Information Technology — George Mason University (Fairfax, VA).</p></section><section id="skills"><h2>Skills</h2><p>Python, HTML, CSS, JavaScript (basics), Git/GitHub; learning networking and cybersecurity fundamentals.</p></section><section id="services"><h2>Services</h2><p>Designing simple, responsive pages and small tools. Open to internship projects and collaborations.</p></section>
+</section>
+
+    <!-- Resume section moved directly after home -->
+    <!-- Assign an id so that navigation links scroll correctly -->
+    <section id="resume">
+      <h2>Resume</h2>
+      <p>Motivated IT student with hands‑on experience in Active Directory, Linux systems, and home networking...</p>
+
+      <!-- When clicked, this button reveals the embedded resume without leaving the page -->
+      <a class="btn" href="#" onclick="showResume(); return false;">View Resume</a>
+      <!-- Download link to the PDF for users who want a copy -->
+      <a class="btn" href="assets/resume.pdf" download>Download Resume</a>
+
+      <!-- Hidden container for the embedded resume; it will be displayed via JavaScript -->
+      <div id="pdf-viewer" style="display:none; margin-top:2rem;">
+        <iframe src="assets/resume.pdf#toolbar=0" style="width:100%; height:60rem; border:0;" allowfullscreen></iframe>
+      </div>
+    </section>
+    
+
+    <!-- Skills section follows resume -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill">
+          <i class="fa-brands fa-python" aria-hidden="true"></i>
+          <span class="skill-name">Python</span>
+          <div class="bar"><div class="value" style="width:80%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-users" aria-hidden="true"></i>
+          <span class="skill-name">Active Directory</span>
+          <div class="bar"><div class="value" style="width:75%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-brands fa-linux" aria-hidden="true"></i>
+          <span class="skill-name">Linux Systems</span>
+          <div class="bar"><div class="value" style="width:70%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-network-wired" aria-hidden="true"></i>
+          <span class="skill-name">Networking (Cabling, Switches, Routers)</span>
+          <div class="bar"><div class="value" style="width:70%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+          <span class="skill-name">PowerShell</span>
+          <div class="bar"><div class="value" style="width:60%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-regular fa-file-excel" aria-hidden="true"></i>
+          <span class="skill-name">Excel</span>
+          <div class="bar"><div class="value" style="width:60%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span class="skill-name">IT Controls</span>
+          <div class="bar"><div class="value" style="width:65%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+          <span class="skill-name">Documentation</span>
+          <div class="bar"><div class="value" style="width:80%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+          <span class="skill-name">Data Analysis</span>
+          <div class="bar"><div class="value" style="width:70%"></div></div>
+        </div>
+        <div class="skill">
+          <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+          <span class="skill-name">Problem Solving</span>
+          <div class="bar"><div class="value" style="width:85%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education section now follows skills -->
+    <section id="education">
+      <h2>Education</h2>
+      <p><strong>George Mason University</strong> – B.S. in Information Technology (2024 – Present)</p>
+      <p>GPA: 3.4 / 4.0</p>
+      <p>Relevant coursework: Principles of Computing, IT Architecture</p>
+      <p>Clubs: Engineering Club, Sudanese Student Association</p>
+    </section>
+
+    <!-- Experience section now follows education -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <!-- Use a vertical timeline for experience items -->
+      <div class="timeline">
+        <div class="experience-item">
+          <h3>Data Center Control Access Officer – Sitemetric, Ashburn, VA</h3>
+          <p><em>Mar 2025 – Present</em></p>
+          <ul>
+            <li>Managed access to secure job sites using digital badge systems.</li>
+            <li>Provided support in worker registration and badging, tech troubleshooting, visitor and delivery logs, and parking management.</li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <h3>Digital Associate – Walmart, Ashburn, VA</h3>
+          <p><em>Jan 2024 – Mar 2025</em></p>
+          <ul>
+            <li>Assisted customers with online and digital orders.</li>
+            <li>Communicated with customers to understand their issues and solve them.</li>
+          </ul>
+        </div>
+        <div class="experience-item">
+          <h3>Customer Service Lead – Harris Teeter, Ashburn, VA</h3>
+          <p><em>Aug 2021 – Sep 2023</em></p>
+          <ul>
+            <li>Delivered high-quality customer service in a fast-paced retail environment.</li>
+            <li>Led a team to consistently meet customer satisfaction goals and store performance targets.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section moved to the bottom -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:Elkheiramr@outlook.com">Elkheiramr@outlook.com</a></li>
+        <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:18138087610">(813) 808-7610</a></li>
+        <li><i class="fa-brands fa-github" aria-hidden="true"></i><a href="https://github.com/19xonsor" target="_blank">github.com/19xonsor</a></li>
+      </ul>
+    </section>
+
+    <!-- ============================= -->
+    <!-- JavaScript section -->
+    <!-- This script adds interactive features such as showing the embedded resume, scrollspy navigation, animated skill bars, a back‑to‑top button, and a theme toggle. -->
+    <script>
+      // Show the embedded resume when the "View Resume" button is clicked
+      function showResume() {
+        const viewer = document.getElementById('pdf-viewer');
+        if (viewer && (viewer.style.display === '' || viewer.style.display === 'none')) {
+          viewer.style.display = 'block';
+        }
+      }
+
+      // Scrollspy: highlights the nav link corresponding to the section currently in view
+      (function() {
+        const sectionEls = Array.from(document.querySelectorAll('section[id]'));
+        const navLinks = new Map();
+        document.querySelectorAll('header nav a[href^="#"]').forEach(a => {
+          const id = a.getAttribute('href').substring(1);
+          navLinks.set(id, a);
+        });
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (navLinks.has(id)) navLinks.get(id).classList.add('active');
+          });
+        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0.01 });
+        sectionEls.forEach(section => observer.observe(section));
+      })();
+
+      // Animate skill bars when they enter the viewport
+      (function() {
+        const bars = document.querySelectorAll('.skills-container .bar .value');
+        bars.forEach(bar => {
+          const computed = getComputedStyle(bar);
+          const targetWidth = computed.width;
+          bar.style.width = '0';
+          bar.style.transition = 'width 0.9s ease';
+          const onceObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              bar.style.width = targetWidth;
+              onceObserver.disconnect();
+            }
+          }, { threshold: 0.3 });
+          onceObserver.observe(bar);
+        });
+      })();
+
+      // Back-to-top button: create, show/hide, and implement smooth scroll
+      (function() {
+        const btn = document.createElement('button');
+        btn.id = 'toTop';
+        btn.setAttribute('aria-label', 'Back to top');
+        btn.textContent = '↑';
+        document.body.appendChild(btn);
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        const toggleVisibility = () => {
+          btn.classList.toggle('show', window.scrollY > 600);
+        };
+        toggleVisibility();
+        window.addEventListener('scroll', toggleVisibility);
+      })();
+
+      // Theme toggle (light/dark) using localStorage
+      (function() {
+        const storageKey = 'theme';
+        const root = document.documentElement;
+        const current = localStorage.getItem(storageKey) || 'dark';
+        root.dataset.theme = current;
+        // Create toggle button
+        const toggleBtn = document.createElement('button');
+        toggleBtn.id = 'themeToggle';
+        toggleBtn.textContent = current === 'dark' ? '☀︎' : '🌙';
+        // Append the toggle button into the header (after nav)
+        const header = document.querySelector('header');
+        if (header) header.appendChild(toggleBtn);
+        toggleBtn.addEventListener('click', () => {
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          localStorage.setItem(storageKey, next);
+          toggleBtn.textContent = next === 'dark' ? '☀︎' : '🌙';
+        });
+      })();
+    </script>
 </body>
 </html>

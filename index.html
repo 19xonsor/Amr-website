@@ -29,7 +29,7 @@
 <h3 class="typing-text">I'm a <span></span></h3>
 <p>I’m Amr, a sophomore Information Technology student at George Mason University with a growing passion for cybersecurity and IT systems. While I build websites and creative projects for practice, my real interest is in exploring networks, security, and hands-on labs that teach me how technology works behind the scenes. This portfolio highlights some of my projects as I continue building the skills I’ll need for a future career in cybersecurity.</p>
 <div class="social-icons">
-<a href="https://www.linkedin.com/in/amr-elkheir-089073225/"><i class="fa-brands fa-linkedin"></i></a>
+<a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
 <a href="https://github.com/19xonsor"><i class="fa-brands fa-github"></i></a>
 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -39,25 +39,20 @@
 </section>
 
     <!-- Resume section moved directly after home -->
-    <!-- Assign an id so that navigation links scroll correctly -->
-    <section id="resume">
+    <section id="resume" class="animate-on-scroll">
       <h2>Resume</h2>
-      <p>Motivated IT student with hands‑on experience in Active Directory, Linux systems, and home networking...</p>
-
-      <!-- When clicked, this button reveals the embedded resume without leaving the page -->
-      <a class="btn" href="#" onclick="showResume(); return false;">View Resume</a>
-      <!-- Download link to the PDF for users who want a copy -->
-      <a class="btn" href="assets/resume.pdf" download>Download Resume</a>
-
-      <!-- Hidden container for the embedded resume; it will be displayed via JavaScript -->
-      <div id="pdf-viewer" style="display:none; margin-top:2rem;">
-        <iframe src="assets/resume.pdf#toolbar=0" style="width:100%; height:60rem; border:0;" allowfullscreen></iframe>
-      </div>
+      <p>Motivated IT student with hands-on experience in Active Directory, Linux systems, and home networking...</p>
+      <!-- Button to show/hide the embedded resume -->
+      <button class="btn" onclick="showResume()">View Resume</button>
+      <!-- Embedded PDF viewer, hidden by default -->
+      <iframe id="resumeViewer" src="assets/resume.pdf" style="width:100%;height:80vh;display:none;border:none;margin-top:2rem;"></iframe>
+      <!-- Direct download (PDF) -->
+      <a class="btn" href="assets/resume.pdf?v=2" download>Download Resume</a>
     </section>
     
 
     <!-- Skills section follows resume -->
-    <section id="skills">
+    <section id="skills" class="animate-on-scroll">
       <h2>Skills</h2>
       <div class="skills-container">
         <div class="skill">
@@ -114,7 +109,7 @@
     </section>
 
     <!-- Education section now follows skills -->
-    <section id="education">
+    <section id="education" class="animate-on-scroll">
       <h2>Education</h2>
       <p><strong>George Mason University</strong> – B.S. in Information Technology (2024 – Present)</p>
       <p>GPA: 3.4 / 4.0</p>
@@ -123,7 +118,7 @@
     </section>
 
     <!-- Experience section now follows education -->
-    <section id="experience">
+    <section id="experience" class="animate-on-scroll">
       <h2>Experience</h2>
       <!-- Use a vertical timeline for experience items -->
       <div class="timeline">
@@ -155,7 +150,7 @@
     </section>
 
     <!-- Contact section moved to the bottom -->
-    <section id="contact">
+    <section id="contact" class="animate-on-scroll">
       <h2>Contact</h2>
       <ul class="contact-list">
         <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:Elkheiramr@outlook.com">Elkheiramr@outlook.com</a></li>
@@ -163,93 +158,101 @@
         <li><i class="fa-brands fa-github" aria-hidden="true"></i><a href="https://github.com/19xonsor" target="_blank">github.com/19xonsor</a></li>
       </ul>
     </section>
-
-    <!-- ============================= -->
-    <!-- JavaScript section -->
-    <!-- This script adds interactive features such as showing the embedded resume, scrollspy navigation, animated skill bars, a back‑to‑top button, and a theme toggle. -->
     <script>
-      // Show the embedded resume when the "View Resume" button is clicked
-      function showResume() {
-        const viewer = document.getElementById('pdf-viewer');
-        if (viewer && (viewer.style.display === '' || viewer.style.display === 'none')) {
-          viewer.style.display = 'block';
-        }
+    /* Show or hide resume viewer */
+    function showResume() {
+      const viewer = document.getElementById('resumeViewer');
+      if (viewer) {
+        viewer.style.display = viewer.style.display === 'block' ? 'none' : 'block';
       }
+    }
 
-      // Scrollspy: highlights the nav link corresponding to the section currently in view
-      (function() {
-        const sectionEls = Array.from(document.querySelectorAll('section[id]'));
-        const navLinks = new Map();
-        document.querySelectorAll('header nav a[href^="#"]').forEach(a => {
-          const id = a.getAttribute('href').substring(1);
-          navLinks.set(id, a);
+    /* Scrollspy: highlight active nav link based on scroll position */
+    (function() {
+      const sections = [...document.querySelectorAll('section[id]')];
+      const navLinks = new Map(
+        [...document.querySelectorAll('header nav a[href^="#"]')]
+          .map(a => [a.getAttribute('href').slice(1), a])
+      );
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute('id');
+          if (!id) return;
+          navLinks.forEach(a => a.classList.remove('active'));
+          if (navLinks.has(id)) {
+            navLinks.get(id).classList.add('active');
+          }
         });
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const id = entry.target.id;
-            navLinks.forEach(link => link.classList.remove('active'));
-            if (navLinks.has(id)) navLinks.get(id).classList.add('active');
-          });
-        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0.01 });
-        sectionEls.forEach(section => observer.observe(section));
-      })();
+      }, { rootMargin: '-50% 0px -45% 0px', threshold: 0.1 });
+      sections.forEach(section => observer.observe(section));
+    })();
 
-      // Animate skill bars when they enter the viewport
-      (function() {
-        const bars = document.querySelectorAll('.skills-container .bar .value');
-        bars.forEach(bar => {
-          const computed = getComputedStyle(bar);
-          const targetWidth = computed.width;
-          bar.style.width = '0';
-          bar.style.transition = 'width 0.9s ease';
-          const onceObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-              bar.style.width = targetWidth;
-              onceObserver.disconnect();
-            }
-          }, { threshold: 0.3 });
-          onceObserver.observe(bar);
-        });
-      })();
+    /* Animate skill bars when visible */
+    (function() {
+      const bars = document.querySelectorAll('.skills-container .bar .value');
+      bars.forEach(bar => {
+        const targetWidth = getComputedStyle(bar).width;
+        bar.style.width = '0px';
+        bar.style.transition = 'width 0.8s ease';
+        const animateBar = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            bar.style.width = targetWidth;
+            animateBar.disconnect();
+          }
+        }, { threshold: 0.5 });
+        animateBar.observe(bar);
+      });
+    })();
 
-      // Back-to-top button: create, show/hide, and implement smooth scroll
-      (function() {
-        const btn = document.createElement('button');
-        btn.id = 'toTop';
-        btn.setAttribute('aria-label', 'Back to top');
-        btn.textContent = '↑';
-        document.body.appendChild(btn);
-        btn.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        const toggleVisibility = () => {
-          btn.classList.toggle('show', window.scrollY > 600);
-        };
-        toggleVisibility();
-        window.addEventListener('scroll', toggleVisibility);
-      })();
+    /* Back to top button */
+    (function() {
+      const btn = document.createElement('button');
+      btn.id = 'toTop';
+      btn.setAttribute('aria-label','Back to top');
+      btn.textContent = '↑';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      const toggleBtn = () => {
+        btn.classList.toggle('show', window.scrollY > 500);
+      };
+      toggleBtn();
+      window.addEventListener('scroll', toggleBtn);
+    })();
 
-      // Theme toggle (light/dark) using localStorage
-      (function() {
-        const storageKey = 'theme';
-        const root = document.documentElement;
-        const current = localStorage.getItem(storageKey) || 'dark';
-        root.dataset.theme = current;
-        // Create toggle button
-        const toggleBtn = document.createElement('button');
-        toggleBtn.id = 'themeToggle';
-        toggleBtn.textContent = current === 'dark' ? '☀︎' : '🌙';
-        // Append the toggle button into the header (after nav)
-        const header = document.querySelector('header');
-        if (header) header.appendChild(toggleBtn);
-        toggleBtn.addEventListener('click', () => {
-          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-          root.dataset.theme = next;
-          localStorage.setItem(storageKey, next);
-          toggleBtn.textContent = next === 'dark' ? '☀︎' : '🌙';
+    /* Theme toggle (light / dark) */
+    (function() {
+      const key = 'theme';
+      const current = localStorage.getItem(key) || 'dark';
+      document.documentElement.dataset.theme = current;
+      const header = document.querySelector('header');
+      const toggle = document.createElement('button');
+      toggle.id = 'themeToggle';
+      toggle.textContent = current === 'dark' ? '☀︎' : '🌙';
+      header.appendChild(toggle);
+      toggle.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem(key, next);
+        toggle.textContent = next === 'dark' ? '☀︎' : '🌙';
+      });
+    })();
+
+    /* Fade-in animation for sections */
+    (function() {
+      const faders = document.querySelectorAll('.animate-on-scroll');
+      const fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
         });
-      })();
+      }, { threshold: 0.1 });
+      faders.forEach(el => fadeObserver.observe(el));
+    })();
     </script>
+
 </body>
 </html>

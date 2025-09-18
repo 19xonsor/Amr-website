@@ -140,12 +140,15 @@ span{
     border-radius: 50%;
     box-shadow: 0 0 25px solid #b74b4b;
     cursor: pointer;
-    transition: 0.2s linear;
+    /* Apply grayscale and darken to create a picture effect */
+    filter: grayscale(100%) brightness(80%);
+    transition: filter 0.5s ease, transform 0.5s ease;
 }
 
+/* On hover return the image to full color and slightly zoom in */
 .home-img img:hover{
-    font-size: 1.8rem;
-    font-weight: 500;
+    filter: grayscale(0%) brightness(100%);
+    transform: scale(1.05);
 }
 
 .social-icons a{
@@ -416,81 +419,83 @@ section#resume p{
   color: #fff;
 }
 
-/*
- * Enhancements for readability and interactivity
- */
-/* Increase text size for education and experience sections */
-section#education p {
-  font-size: 1.8rem;
-  line-height: 1.6;
-}
-
-section#experience h3 {
-  font-size: 2.2rem;
-}
-
-section#experience p {
-  font-size: 1.8rem;
-  line-height: 1.5;
-}
-
-section#experience ul {
-  font-size: 1.8rem;
-  line-height: 1.5;
-}
-
+/* ----------------------------------------------------------------
+   Animations and picture effects
+   ---------------------------------------------------------------- */
 /* Back-to-top button styles */
-#toTop {
+#toTop{
   position: fixed;
   right: 2rem;
   bottom: 2rem;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: 2px solid #b74b4b;
-  background: #000;
+  background: transparent;
   color: #b74b4b;
   display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 1.8rem;
-  z-index: 999;
+  z-index: 1000;
+  transition: background 0.3s ease, color 0.3s ease;
 }
-#toTop.show {
+#toTop.show{
   display: flex;
 }
+#toTop:hover{
+  background: #b74b4b;
+  color: #000;
+}
 
-/* Theme toggle button styles */
-#themeToggle {
+/* Theme toggle button in header */
+#themeToggle{
   margin-left: 1rem;
   padding: 0.4rem 0.8rem;
-  border-radius: 0.6rem;
+  border-radius: 0.5rem;
   border: 1px solid #b74b4b;
   background: transparent;
   color: #b74b4b;
   cursor: pointer;
+  font-size: 1.6rem;
 }
 
-/* Light theme overrides. Default theme is dark (defined above). */
-:root[data-theme='light'] {
-  --bg: #ffffff;
-  --text: #111111;
-  --accent: #b74b4b;
+/* Light theme overrides using data-theme attribute */
+:root[data-theme='light']{
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #b74b4b;
+}
+:root[data-theme='light'] body{
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+:root[data-theme='light'] nav a{
+  color: var(--text-color);
+}
+:root[data-theme='light'] .btn{
+  background: var(--bg-color);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
-/* Apply light theme variables to body and controls */
-:root[data-theme='light'] body {
-  background: var(--bg);
-  color: var(--text);
+/* Fade-in animation for sections */
+.animate-on-scroll{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.animate{
+  opacity: 1;
+  transform: translateY(0);
 }
 
-:root[data-theme='light'] nav a {
-  color: var(--text);
-}
-
-:root[data-theme='light'] .btn {
-  background: var(--bg);
-  color: var(--accent);
-  border-color: var(--accent);
+/* Increase font size for education and experience sections */
+#education p,
+#education h2,
+#experience h2,
+#experience p,
+#experience li {
+  font-size: 1.8rem;
 }

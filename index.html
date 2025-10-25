@@ -12,6 +12,7 @@
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<<<<<<< HEAD
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loader"></div>
@@ -43,12 +44,69 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
             <a class="btn" href="#contact">Hire Me</a>
+=======
+<header>
+<a class="logo" href="#">Amr</a>
+<nav>
+<a class="active" href="#home"> Home</a>
+<a href="#resume">Resume</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="home" id="home">
+<div class="home-img">
+<img alt="" src="main.image.jpeg"/>
+</div>
+<div class="home-content">
+<h1>Hi, It's <span>Amr</span></h1>
+<h3 class="typing-text">I'm a <span></span></h3>
+<p>I’m Amr, a sophomore Information Technology student at George Mason University with a growing passion for cybersecurity and IT systems. While I build websites and creative projects for practice, my real interest is in exploring networks, security, and hands-on labs that teach me how technology works behind the scenes. This portfolio highlights some of my projects as I continue building the skills I’ll need for a future career in cybersecurity.</p>
+<div class="social-icons">
+<a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+<a href="https://github.com/19xonsor"><i class="fa-brands fa-github"></i></a>
+<a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+</div>
+<a class="btn" href="#">Hire me</a>
+</div>
+</section>
+
+    <!-- Resume section moved directly after home -->
+    <section id="resume" class="animate-on-scroll">
+      <h2>Resume</h2>
+      <p>Motivated IT student with hands-on experience in Active Directory, Linux systems, and home networking...</p>
+      <!-- Button to show/hide the embedded resume -->
+      <button class="btn" onclick="showResume()">View Resume</button>
+      <!-- Embedded resume image instead of PDF. Using an image removes the PDF toolbar completely. -->
+      <div id="resumeViewer" style="display:none; margin-top:2rem;">
+        <!-- Inline the resume image via base64 to ensure it always loads. The image will be
+             set from JavaScript; the placeholder <img> remains hidden until loaded. -->
+        <img id="resumeImage" src="assets/resume-inline.jpg" alt="Resume image" style="width:100%; height:auto;"/>
+      </div>
+      <!-- Direct download (PDF) -->
+      <a class="btn" href="assets/resume.pdf" download>Download Resume</a>
+    </section>
+    
+
+    <!-- Skills section follows resume -->
+    <section id="skills" class="animate-on-scroll">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill">
+          <i class="fa-brands fa-python" aria-hidden="true"></i>
+          <span class="skill-name">Python</span>
+          <div class="bar"><div class="value" style="width:80%"></div></div>
+>>>>>>> 4244e85aac33d873b4a679b0f4324f795cb9cf6d
         </div>
         <div class="home-img">
             <img src="assets/main.image.jpeg" alt="Amr Profile">
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <h2>My Projects</h2>
@@ -223,9 +281,33 @@
                 </div>
                 <div class="bar"><div class="value" style="width:0" data-width="70%"></div></div>
             </div>
+=======
+    <!-- Education section now follows skills -->
+    <section id="education" class="animate-on-scroll">
+      <h2>Education</h2>
+      <p><strong>George Mason University</strong> – B.S. in Information Technology (2024 – Present)</p>
+      <p>GPA: 3.4 / 4.0</p>
+      <p>Relevant coursework: Principles of Computing, IT Architecture</p>
+      <p>Clubs: Engineering Club, Sudanese Student Association</p>
+    </section>
+
+    <!-- Experience section now follows education -->
+    <section id="experience" class="animate-on-scroll">
+      <h2>Experience</h2>
+      <!-- Use a vertical timeline for experience items -->
+      <div class="timeline">
+        <div class="experience-item">
+          <h3>Data Center Control Access Officer – Sitemetric, Ashburn, VA</h3>
+          <p><em>Mar 2025 – Present</em></p>
+          <ul>
+            <li>Managed access to secure job sites using digital badge systems.</li>
+            <li>Provided support in worker registration and badging, tech troubleshooting, visitor and delivery logs, and parking management.</li>
+          </ul>
+>>>>>>> 4244e85aac33d873b4a679b0f4324f795cb9cf6d
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Experience Section -->
     <section class="experience" id="experience">
         <h2>Work Experience</h2>
@@ -324,5 +406,131 @@
 
     <!-- Custom JavaScript -->
     <script src="js/script.js"></script>
+=======
+    <!-- Contact section moved to the bottom -->
+    <section id="contact" class="animate-on-scroll">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:Elkheiramr@outlook.com">Elkheiramr@outlook.com</a></li>
+        <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:18138087610">(813) 808-7610</a></li>
+        <li><i class="fa-brands fa-github" aria-hidden="true"></i><a href="https://github.com/19xonsor" target="_blank">github.com/19xonsor</a></li>
+      </ul>
+    </section>
+    <script>
+    /* Show or hide resume viewer */
+    function showResume() {
+      const viewer = document.getElementById('resumeViewer');
+      if (viewer) {
+        viewer.style.display = viewer.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+
+    /* Highlight nav link when clicked */
+    (function() {
+      const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    })();
+
+    /* Animate skill bars when visible */
+    (function() {
+      const bars = document.querySelectorAll('.skills-container .bar .value');
+      bars.forEach(bar => {
+        const targetWidth = getComputedStyle(bar).width;
+        bar.style.width = '0px';
+        bar.style.transition = 'width 0.8s ease';
+        const animateBar = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            bar.style.width = targetWidth;
+            animateBar.disconnect();
+          }
+        }, { threshold: 0.5 });
+        animateBar.observe(bar);
+      });
+    })();
+
+    /* Back to top button */
+    (function() {
+      const btn = document.createElement('button');
+      btn.id = 'toTop';
+      btn.setAttribute('aria-label','Back to top');
+      btn.textContent = '↑';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      const toggleBtn = () => {
+        btn.classList.toggle('show', window.scrollY > 500);
+      };
+      toggleBtn();
+      window.addEventListener('scroll', toggleBtn);
+    })();
+
+    /* Theme toggle (light / dark) */
+    (function() {
+      const key = 'theme';
+      const current = localStorage.getItem(key) || 'dark';
+      document.documentElement.dataset.theme = current;
+      const header = document.querySelector('header');
+      const toggle = document.createElement('button');
+      toggle.id = 'themeToggle';
+      toggle.textContent = current === 'dark' ? '☀︎' : '🌙';
+      header.appendChild(toggle);
+      toggle.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem(key, next);
+        toggle.textContent = next === 'dark' ? '☀︎' : '🌙';
+      });
+    })();
+
+    /* Fade-in animation for sections */
+    (function() {
+      const faders = document.querySelectorAll('.animate-on-scroll');
+      const fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, { threshold: 0.1 });
+      faders.forEach(el => fadeObserver.observe(el));
+    })();
+
+
+    /* Scroll spy to highlight nav links based on visible sections. When
+       a section enters the viewport, its corresponding nav link receives
+       the `.active` class. */
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+      // Map section IDs to their navigation links for quick lookup
+      const linkMap = {};
+      navLinks.forEach(link => {
+        const id = link.getAttribute('href').substring(1);
+        linkMap[id] = link;
+      });
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            // Clear existing active state
+            navLinks.forEach(l => l.classList.remove('active'));
+            // Highlight the link that matches the visible section
+            if (linkMap[id]) {
+              linkMap[id].classList.add('active');
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+      sections.forEach(section => observer.observe(section));
+    })();
+    </script>
+
+>>>>>>> 4244e85aac33d873b4a679b0f4324f795cb9cf6d
 </body>
 </html>
